@@ -73,7 +73,7 @@ for key in user_dict:
 for key in user_dict:
     for i in range(len(user_dict[key]) - 1):
         if user_dict[key][i] == user_dict[key][i+1]:
-            user_dict[key][i] = None
+            user_dict[key][i] = None #FIXME!!!!!!! 'NoneType' object is not subscriptable
 
 
 # Создаем словарь, где для каждого fake_step_id будет значением количество пользователей,
