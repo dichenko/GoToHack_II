@@ -1,5 +1,5 @@
 #открываем файл, читаем его построчно
-with open('events_01.csv') as f:
+with open('course-217-events.csv') as f:
     data = f.readlines()
 
 #отрезаем от каждой строки символ переноса
@@ -128,35 +128,9 @@ for key in user_dict:
 dolya = {}
 
 for key in vozvrat:
-    delta =
+    dolya[key] = vozvrat[key] / pristupali[key]
 
-
-
-
-print(pristupali)
-print(vozvrat)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-for key in user_dict:
-    print(key,':_____________________________' )
-    for el in user_dict[key]:
-        print(el)
-
+print(dolya)
 
 
 
