@@ -41,7 +41,7 @@ for i in range(1,len(strukture)):
         if k != 7:
             strukture[i][k] = int(strukture[i][k])
 
-
+#словарь соответствия step_id и fake_step_id
 struk_new = {}
 
 #В новый словарь struk_new сохраняем только [step_id, fake_step_id]
@@ -78,7 +78,6 @@ for key in user_dict:
 
 # Создаем словарь, где для каждого fake_step_id будет значением количество пользователей,
 #которое сделало возврат к этому степу vozvrat = {fake_step_id: val}
-
 vozvrat = {}
 
 
@@ -96,13 +95,37 @@ for key in user_dict:  #Для каждого пользователя
                     #Ищем fid с ещё бОльшим временем
                     for z in range(len(user_dict[key])):
                         if user_dict[key][z][3] == fid and user_dict[key][z][2] > user_dict[key][j][2]:
-                            passed_step_id.append(fid) #Добавляем fid  в список рассмотренных
-                            if fid in vozvrat.keys():  #добавляем fid в список возвратных ++
-                                vozvrat[fid] += 1
-                            else:
-                                vozvrat[fid] = 1
 
-print('v',vozvrat)
+                            if fid not in passed_step_id:
+                                #print('user:', key, 'f_step_id:', fid)
+                                passed_step_id.append(fid) #Добавляем fid  в список рассмотренных
+                                if fid in vozvrat.keys():  #добавляем fid в список возвратных ++
+                                    vozvrat[fid] += 1
+                                else:
+                                    vozvrat[fid] = 1
+
+
+# Создаем словарь, где для каждого fake_step_id будет значением количество пользователей,
+#которые приступали хоть раз к этому степу pristupali = {fake_step_id: val}
+pristupali = {}
+
+for key in user_dict:
+    d = user_dict[key] #list of events
+    passed_step_id = []
+    for i in range(len(d)):
+        event = d[i] #list, event
+        fid = event[3]
+        if fid not in passed_step_id:
+            passed_step_id.append(fid)
+            if fid in pristupali.keys():
+                pristupali[fid] += 1
+            else:
+                pristupali[fid] = 1
+
+
+print(pristupali)
+print(vozvrat)
+
 
 
 
