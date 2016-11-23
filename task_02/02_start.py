@@ -1,8 +1,8 @@
-#открываем файл, читаем мего построчно
+#открываем файл, читаем его построчно
 with open('events_01.csv') as f:
     data = f.readlines()
 
-#отрезаем от каждой строки символ переноса строки
+#отрезаем от каждой строки символ переноса
 for i in range(len(data)):
     data[i] = data[i][:-1]
 
@@ -20,8 +20,8 @@ for i in range(len(data)):
 
 
 #Создаем новый словарь, состоящий из ключа - User_ID и значений - словарь словарей step_fake_id: [time1, time2]
-#открываем новый файл
 
+#открываем новый файл
 with open('course-217-structure_fake_id.CSV') as f:
     strukture = f.readlines()
 
@@ -95,12 +95,14 @@ for key in user_dict:  #Для каждого пользователя
                 if (user_dict[key][j][3] == fid+1) and (user_dict[key][j][2] > user_dict[key][i][2]):
                     #Ищем fid с ещё бОльшим временем
                     for z in range(len(user_dict[key])):
-                        if user_dict[key][k][3] == fid and user_dict[key][k][2] > user_dict[key][j][2]:
+                        if user_dict[key][z][3] == fid and user_dict[key][z][2] > user_dict[key][j][2]:
                             passed_step_id.append(fid) #Добавляем fid  в список рассмотренных
-                            if fid in vozvrat.keys():
+                            if fid in vozvrat.keys():  #добавляем fid в список возвратных ++
                                 vozvrat[fid] += 1
                             else:
                                 vozvrat[fid] = 1
+
+print('v',vozvrat)
 
 
 
