@@ -123,6 +123,16 @@ for key in user_dict:
                 pristupali[fid] = 1
 
 
+#Для каждого возвратного степа находим долю пользователей  приступали/возвращались
+#И заносим в новый словарь dolya
+dolya = {}
+
+for key in vozvrat:
+    delta =
+
+
+
+
 print(pristupali)
 print(vozvrat)
 
