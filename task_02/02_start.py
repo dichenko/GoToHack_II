@@ -73,20 +73,15 @@ for key in user_dict:
 for key in user_dict:
     for i in range(len(user_dict[key]) - 1):
         if user_dict[key][i] == user_dict[key][i+1]:
-            user_dict[key][i] = None
+            user_dict[key][i] = "nop"
 
 for key in user_dict:
     z = user_dict[key]
-    for el in z:
-        if el == None:
-            z.remove(el)
+    for i in range(z.count('nop')):
+        z.remove('nop')
 
-user_dict[63].remove(None)
 
-for el in user_dict:
-    for k in el:
-        if k == None:
-            print(el, k, 'ACHTUNG!!!!!!')
+
 
 # Создаем словарь, где для каждого fake_step_id будет значением количество пользователей,
 #которое сделало возврат к этому степу vozvrat = {fake_step_id: val}
@@ -96,7 +91,7 @@ vozvrat = {}
 #для каждого пользователя ищем степы с возвратом
 #
 for key in user_dict:  #Для каждого пользователя
-    print(key)
+
     w = user_dict[key]
     passed_step_id = []  #Заводим список
     for i in range(len(w)): #По количеству записей
@@ -149,7 +144,12 @@ for key in vozvrat:
     dolya[key] = vozvrat[key] / pristupali[key]
 
 print(dolya)
+dol = []
+for key in dolya:
+    dol.append([key, dolya[key]])
 
+dol.sort(key = lambda x: x[1])
+print (dol[:10])
 
 
 
