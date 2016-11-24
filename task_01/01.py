@@ -96,14 +96,20 @@ finish_time = {}
 for user in dict_of_users:
     sum = 0
     x = dict_of_users[user] ## list of lists
-    i = 0
-    while sum < 24 and i < len(x):
+    sum = 0
+    for i in range(len(x)):
         sum += x[i][4]
-        i += 1
-    if sum == 24:
-        finish_time[user] = x[i-1][3]
+        if sum == 24:
+            finish_time[user] = x[i][3]
+            break
 
 
+
+
+#--------------------------------
+for el in dict_of_users[2649]:
+    print(el)                    #
+#--------------------------------
 '''
 finish_time = {
 1 : 1463664235
@@ -124,7 +130,7 @@ for key in delta_time:
 delta_time_list.sort(key = lambda x: x[1])
 
 for i in range(10):
-    print(delta_time_list[i][0], end = ',', sep = '')
+    print(delta_time_list[i])
 
 
 
