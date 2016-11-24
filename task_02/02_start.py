@@ -148,7 +148,7 @@ dol = []
 for key in dolya:
     dol.append([key, dolya[key]])
 
-dol.sort(key = lambda x: x[1])
+dol.sort(key = lambda x: x[1], reverse = True)
 print (dol[:10])
 
 
