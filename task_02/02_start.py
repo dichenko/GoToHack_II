@@ -44,19 +44,9 @@ for i in range(1,len(strukture)):
 #словарь соответствия step_id и fake_step_id
 struk_new = {}
 
-
 #В новый словарь struk_new сохраняем только [step_id, fake_step_id]
 for i in range(1,len(strukture)):
     struk_new[strukture[i][5]] = strukture[i][9]
-
-#словарь соответствия  fake_step_id и step_id
-struk_new1 = {}
-
-for i in range(1,len(strukture)):
-    struk_new1[strukture[i][9]] = strukture[i][5]
-
-
-
 
 
 #В список событий data заносим в каждую строчку дополнительный параметр fake_step_id
@@ -83,13 +73,7 @@ for key in user_dict:
 for key in user_dict:
     for i in range(len(user_dict[key]) - 1):
         if user_dict[key][i] == user_dict[key][i+1]:
-            user_dict[key][i] = None
-
-for key in user_dict:
-    s = user_dict[key]
-    for i in range(s.count(None)):
-        s.remove(None)
-
+            user_dict[key][i] = None #FIXME!!!!!!! 'NoneType' object is not subscriptable
 
 
 # Создаем словарь, где для каждого fake_step_id будет значением количество пользователей,
@@ -146,26 +130,7 @@ dolya = {}
 for key in vozvrat:
     dolya[key] = vozvrat[key] / pristupali[key]
 
-#print(dolya)
-
-#Создадим список, в котором  фейковые id заменим на настоящие (инфо берем из словаря struk_new1)
-
-
-
-final_list = []
-for key in dolya:
-    try:
-        final_list.append([struk_new1[key], dolya[key]])
-    except: print('Ops!')
-#Полученный список сортируем по доле, по убыванию
-final_list.sort(key = lambda x: x[1], reverse=True)
-
-for el in final_list[:10]:
-    print(el[0],',',end = '', sep = '')
-
-
-
-
+print(dolya)
 
 
 
