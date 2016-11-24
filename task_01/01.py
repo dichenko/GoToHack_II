@@ -1,5 +1,5 @@
 
-with open('events_02.csv') as f:
+with open('course-217-events.csv') as f:
     data = f.readlines()
 
 for i in range(len(data)):
@@ -82,8 +82,6 @@ start_time = {}
 for user in dict_of_users:
     start_time[user] = dict_of_users[user][0][3]
 
-for key in start_time:
-    print(key, start_time[key])
 
 '''
 start_time = {
@@ -99,11 +97,34 @@ for user in dict_of_users:
     sum = 0
     x = dict_of_users[user] ## list of lists
     i = 0
-    while sum < 24:
+    while sum < 24 and i < len(x):
         sum += x[i][4]
         i += 1
-    finish_time[user] = x[i-1][3]
+    if sum == 24:
+        finish_time[user] = x[i-1][3]
 
-print(finish_time)
+
+'''
+finish_time = {
+1 : 1463664235
+2 : 1463630591
+3 : 1463625716
+}
+'''
+
+delta_time = {}
+for key in finish_time:
+    delta_time[key] = finish_time[key] - start_time[key]
+
+delta_time_list = []
+
+for key in delta_time:
+    delta_time_list.append([key, delta_time[key]])
+
+delta_time_list.sort(key = lambda x: x[1])
+
+for i in range(10):
+    print(delta_time_list[i][0], end = ',', sep = '')
+
 
 
